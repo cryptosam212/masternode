@@ -250,10 +250,7 @@ clear
 }
 
 function important_information() {
- echo
- echo -e "${BLUE}================================================================================================================================${NC}"
- echo -e "${PURPLE}Windows Wallet Guide. https://github.com/Realbityoda/Dextro/blob/master/README.md${NC}"
- echo -e "${BLUE}================================================================================================================================${NC}"
+ echo -e "${BLUE}===========================================================================================================================${NC}"
  echo -e "$COIN_NAME Masternode is up and running listening on port ${GREEN}$COIN_PORT${NC}."
  echo -e "Configuration file is: ${RED}$CONFIGFOLDER/$CONFIG_FILE${NC}"
  echo -e "Start: ${RED}systemctl start $COIN_NAME.service${NC}"
@@ -264,13 +261,9 @@ function important_information() {
  echo -e "Use ${RED}$COIN_CLI getinfo${NC} to check your syncing blocks."
  echo -e "Use ${RED}$COIN_CLI mnsync status${NC} to check Sync Completed TRUE."
  echo -e "Use ${RED}$COIN_CLI masternode status${NC} to check your MN."
- if [[ -n $SENTINEL_REPO  ]]; then
- echo -e "${RED}Sentinel${NC} is installed in ${RED}/root/sentinel_$COIN_NAME${NC}"
- echo -e "Sentinel logs is: ${RED}$CONFIGFOLDER/sentinel.log${NC}"
- fi
- echo -e "${BLUE}================================================================================================================================${NC}"
- echo -e "${CYAN}Thank you realbit Yoda. Follow twitter to stay updated.  https://twitter.com/Real_Bit_Yoda${NC}"
- echo -e "${BLUE}================================================================================================================================${NC}"
+ echo -e "${BLUE}============================================================================================================================${NC}"
+ echo -e "${CYAN}Thank you realbit Yoda. ${NC}"
+ echo -e "${BLUE}============================================================================================================================${NC}"
 }
 
 function setup_node() {
