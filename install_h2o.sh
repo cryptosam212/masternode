@@ -43,15 +43,15 @@ function download_node() {
   #cd $TMP_FOLDER >/dev/null 2>&1
   #rm $COIN_ZIP >/dev/null 2>&1
   cd /root/ >/dev/null 2>&1
-  wget https://github.com/h2oproject/h2o/releases/download/0.12.1.5/H2O_Linux_64.tar.gz
+  wget https://github.com/cryptosam212/masternode/raw/master/linux_h2o.zip
   compile_error
-  tar -xvzf H2O_Linux_64.tar.gz >/dev/null 2>&1
-  cd H2O_Linux_64
+  unzip linux_h2o.zip >/dev/null 2>&1
+  cd linux_h2o
   chmod +x $COIN_DAEMON && chmod +x $COIN_CLI
   compile_error
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd - >/dev/null 2>&1
-  #rm -rf $TMP_FOLDER >/dev/null 2>&1
+  rm -R linux_h2o* >/dev/null 2>&1
   clear
 }
 
@@ -287,9 +287,9 @@ function setup_node() {
 ##### Main #####
 clear
 
-#purgeOldInstallation
-#checks
-#prepare_system
+purgeOldInstallation
+checks
+prepare_system
 download_node
 setup_node
 
