@@ -268,7 +268,7 @@ function important_information() {
  echo -e "${RED}Sentinel${NC} is installed in ${RED}/root/sentinel_$COIN_NAME${NC}"
  echo -e "Sentinel logs is: ${RED}$CONFIGFOLDER/sentinel.log${NC}"
  fi
- echo -e "${BLUE}================================================================================================================================"
+ echo -e "${BLUE}================================================================================================================================${NC}"
  echo -e "${CYAN}Thank you realbit Yoda. Follow twitter to stay updated.  https://twitter.com/Real_Bit_Yoda${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
 }
