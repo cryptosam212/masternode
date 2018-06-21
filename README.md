@@ -4,6 +4,11 @@ Masternode setup for alt coins
 
 Just wget namefile.sh that you want to setup masternode on linux server and run command: bash namefile.sh
 
+setup Lumen Node.
+
+wget https://github.com/cryptosam212/masternode/raw/master/install_lumen.sh
+bash install_lumen.sh
+
 
 
 Thank you for your donation.
