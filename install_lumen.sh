@@ -284,7 +284,7 @@ function setup_node() {
   create_config
   create_key
   update_config
-  #enable_firewall
+  enable_firewall
   configure_systemd
   important_information
 }
@@ -293,9 +293,9 @@ function setup_node() {
 ##### Main #####
 clear
 
-#purgeOldInstallation
-#checks
-#prepare_system
+purgeOldInstallation
+checks
+prepare_system
 download_node
 setup_node
 
