@@ -2,7 +2,7 @@
 
 Masternode setup for alt coins
 
-Just wget namefile.sh that you want to setup masternode on linux server and run command: bash namefile.sh
+For Linux server 16.04 x64
 
 ==============================================================================
 <b>setup LUMEN Node</b>.
