@@ -23,18 +23,23 @@ MAG='\e[1;35m'
 
 purgeOldInstallation() {
     echo -e "${GREEN}Searching and removing old $COIN_NAME files and configurations${NC}"
-    #kill wallet daemon
-	sudo systemctl stop $COIN_NAME.service
-    sudo killall $COIN_DAEMON > /dev/null 2>&1
-    #remove old ufw port allow
-    sudo ufw delete allow $COIN_PORT/tcp > /dev/null 2>&1
-    #remove old files
-    if [ -d "$CONFIGFOLDER" ]; then
-        sudo rm -rf $CONFIGFOLDER > /dev/null 2>&1
+        if [ -d "$CONFIGFOLDER" ]; then
+    echo -e "${RED} ERROR : $COIN_NAME already installed${NC}";
+    exit 1
     fi
+    
+    #kill wallet daemon
+	#sudo systemctl stop $COIN_NAME.service
+    #sudo killall $COIN_DAEMON > /dev/null 2>&1
+    #remove old ufw port allow
+    #sudo ufw delete allow $COIN_PORT/tcp > /dev/null 2>&1
+    #remove old files
+    #if [ -d "$CONFIGFOLDER" ]; then
+        #sudo rm -rf $CONFIGFOLDER > /dev/null 2>&1
+    #fi
     #remove binaries and Dextro utilities
-    cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
-    echo -e "${GREEN}* Done${NONE}";
+    #cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
+    #echo -e "${GREEN}* Done${NONE}";
 }
 
 
