@@ -51,7 +51,7 @@ function download_node() {
   compile_error
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd - >/dev/null 2>&1
-  rm -R linux_h2o* >/dev/null 2>&1
+  rm -R linux_delor* >/dev/null 2>&1
   clear
 }
 
@@ -109,7 +109,6 @@ rpcallowip=127.0.0.1
 listen=1
 server=1
 daemon=1
-
 port=$COIN_PORT
 EOF
 }
@@ -137,7 +136,6 @@ clear
 }
 
 function update_config() {
-
   cat << EOF >> $CONFIGFOLDER/$CONFIG_FILE
 logintimestamps=1
 maxconnections=256
@@ -225,9 +223,9 @@ DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade >/dev/null 2>&1
 apt install -y software-properties-common >/dev/null 2>&1
 apt-get install unzip nano -y >/dev/null 2>&1
-echo -e "${PURPLE}Adding bitcoin PPA repository"
+echo -e "${PURPLE}Adding bitcoin PPA repository${NC}"
 apt-add-repository -y ppa:bitcoin/bitcoin >/dev/null 2>&1
-echo -e "Installing required packages, it may take some time to finish.${NC}"
+echo -e "${YELLOW}Installing required packages, it may take some time to finish.${NC}"
 apt-get update >/dev/null 2>&1
 apt-get install libzmq3-dev -y >/dev/null 2>&1
 apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
@@ -250,7 +248,7 @@ clear
 }
 
 function important_information() {
- echo -e "${BLUE}===========================================================================================================================${NC}"
+ echo -e "${BLUE}=========================================================================================================${NC}"
  echo -e "$COIN_NAME Masternode is up and running listening on port ${GREEN}$COIN_PORT${NC}."
  echo -e "Configuration file is: ${RED}$CONFIGFOLDER/$CONFIG_FILE${NC}"
  echo -e "Start: ${RED}systemctl start $COIN_NAME.service${NC}"
@@ -261,9 +259,10 @@ function important_information() {
  echo -e "Use ${RED}$COIN_CLI getinfo${NC} to check your syncing blocks."
  echo -e "Use ${RED}$COIN_CLI mnsync status${NC} to check Sync Completed TRUE."
  echo -e "Use ${RED}$COIN_CLI masternode status${NC} to check your MN."
- echo -e "${BLUE}============================================================================================================================${NC}"
- echo -e "${CYAN}Thank you realbit Yoda. ${NC}"
- echo -e "${BLUE}============================================================================================================================${NC}"
+ echo -e "${BLUE}=========================================================================================================${NC}"
+ echo -e "${YELLOW}Thank you for your donation${NC}"
+ echo -e "${YELLOW}DOGE : DBmgChHwG6GLXtQkhRUdGCpEvGwjMC2xdA$ {NC}"
+ echo -e "${YELLOW}DELOR: DR9GciQkDJ3k6XAnagS4U6KpDFWLRjrcCq ${NC}"
 }
 
 function setup_node() {
@@ -271,8 +270,8 @@ function setup_node() {
   create_config
   create_key
   update_config
-  #enable_firewall
-  #configure_systemd
+  enable_firewall
+  configure_systemd
   important_information
 }
 
@@ -280,9 +279,9 @@ function setup_node() {
 ##### Main #####
 clear
 
-#purgeOldInstallation
-#checks
-#prepare_system
+purgeOldInstallation
+checks
+prepare_system
 download_node
 setup_node
 
