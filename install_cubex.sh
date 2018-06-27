@@ -259,7 +259,9 @@ function important_information() {
  echo -e "Use ${RED}$COIN_CLI mnsync status${NC} to check Sync Completed TRUE."
  echo -e "Use ${RED}$COIN_CLI masternode status${NC} to check your MN."
  echo -e "${BLUE}============================================================================================================================${NC}."
- echo -e "${YELLOW}Thank you for Donate. CUBEX: CZfVhWiQSyNWhFYfCMZ1tk8mKi8ipbfWc5${NC}";
+ echo -e "${YELLOW}Thank you for your donation${NC}"
+ echo -e "${YELLOW}DOGE : DBmgChHwG6GLXtQkhRUdGCpEvGwjMC2xdA ${NC}"
+ echo -e "${YELLOW}CUBEX: CZfVhWiQSyNWhFYfCMZ1tk8mKi8ipbfWc5 ${NC}";
 }
 
 function setup_node() {
