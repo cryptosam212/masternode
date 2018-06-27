@@ -219,7 +219,6 @@ fi
 function prepare_system() {
 echo -e "Preparing the VPS to setup. ${CYAN}$COIN_NAME${NC} ${RED}Masternode${NC}"
 apt-get update >/dev/null 2>&1
-apt-get upgrade -y >/dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade >/dev/null 2>&1
 apt install -y software-properties-common >/dev/null 2>&1
@@ -261,8 +260,8 @@ function important_information() {
  echo -e "Use ${RED}$COIN_CLI mnsync status${NC} to check Sync Completed TRUE."
  echo -e "Use ${RED}$COIN_CLI masternode status${NC} to check your MN."
  echo -e "${BLUE}=========================================================================================================${NC}"
- echo -e "${YELLOW}Thank you for your donation${NC}"
- echo -e "${YELLOW}DOGE : DBmgChHwG6GLXtQkhRUdGCpEvGwjMC2xdA$ {NC}"
+ echo -e "${YELLOW}Thank you for your donation ${NC}"
+ echo -e "${YELLOW}DOGE : DBmgChHwG6GLXtQkhRUdGCpEvGwjMC2xdA ${NC}"
  echo -e "${YELLOW}DELOR: DR9GciQkDJ3k6XAnagS4U6KpDFWLRjrcCq ${NC}"
 }
 
