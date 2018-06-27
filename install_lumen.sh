@@ -26,7 +26,7 @@ MAG='\e[1;35m'
 purgeOldInstallation() {
     echo -e "${GREEN}Searching and removing old $COIN_NAME files and configurations${NC}"
     if [ -d "$CONFIGFOLDER" ]; then
-        echo -e "${GREEN} $COIN_NAME Already installed ${NONE}";
+        echo -e "${RED} $COIN_NAME Already installed ${NC}";
 	exit 1
 	#sudo rm -rf $CONFIGFOLDER > /dev/null 2>&1
     fi    
