@@ -259,17 +259,15 @@ function important_information() {
  echo -e "Use ${RED}$COIN_CLI mnsync status${NC} to check Sync Completed TRUE."
  echo -e "Use ${RED}$COIN_CLI masternode status${NC} to check your MN."
  echo -e "${BLUE}============================================================================================================================${NC}"
- echo -e "${CYAN}Thank you realbit Yoda. ${NC}"
- echo -e "${BLUE}============================================================================================================================${NC}"
-}
+ }
 
 function setup_node() {
   get_ip
   create_config
   create_key
   update_config
-  #enable_firewall
-  #configure_systemd
+  enable_firewall
+  configure_systemd
   important_information
 }
 
@@ -277,9 +275,9 @@ function setup_node() {
 ##### Main #####
 clear
 
-#purgeOldInstallation
-#checks
-#prepare_system
+purgeOldInstallation
+checks
+prepare_system
 download_node
 setup_node
 
