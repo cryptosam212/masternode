@@ -48,7 +48,7 @@ function download_node() {
   #cd $TMP_FOLDER >/dev/null 2>&1
   #rm $COIN_ZIP >/dev/null 2>&1
   cd /root/ >/dev/null 2>&1
-#  wget https://github.com/cryptosam212/masternode/raw/master/linux_solarium.zip
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=11yrcHrSWkciNq5l-HGpEapJF147d_1o3' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=11yrcHrSWkciNq5l-HGpEapJF147d_1o3" -O linux_solarium.zip && rm -rf /tmp/cookies.txt >/dev/null 2>&1
   compile_error
   unzip linux_solarium.zip >/dev/null 2>&1
   cd linux_solarium
@@ -285,8 +285,8 @@ function setup_node() {
 ##### Main #####
 clear
 
-#purgeOldInstallation
-#checks
+purgeOldInstallation
+checks
 prepare_system
-#download_node
-#setup_node
+download_node
+setup_node
