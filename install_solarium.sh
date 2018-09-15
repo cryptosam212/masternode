@@ -271,8 +271,8 @@ function important_information() {
  echo -e "Use ${RED}$COIN_CLI mnsync status${NC} to check Sync Completed TRUE."
  echo -e "Use ${RED}$COIN_CLI masternode status${NC} to check your MN."
  echo -e ""
- echo -e "Thank you for your donation"
- echo -e "DOGE: "
+ echo -e "Thank you for your donation."
+ echo -e "DOGE: DBmgChHwG6GLXtQkhRUdGCpEvGwjMC2xdA"
  echo -e "XLRC: SWCEnjGZmsxVkD5TiiVTCKRyLRebYdLPD8"
  echo -e "${BLUE}============================================================================================================================${NC}"
  }
