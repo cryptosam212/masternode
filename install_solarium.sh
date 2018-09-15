@@ -262,12 +262,18 @@ function important_information() {
  echo -e "Configuration file is: ${RED}$CONFIGFOLDER/$CONFIG_FILE${NC}"
  echo -e "Start: ${RED}systemctl start $COIN_NAME.service${NC}"
  echo -e "Stop: ${RED}systemctl stop $COIN_NAME.service${NC}"
+ echo -e ""
  echo -e "VPS_IP:PORT ${GREEN}$NODEIP:$COIN_PORT${NC}"
  echo -e "MASTERNODE GENKEY is: ${RED}$COINKEY${NC}"
+ echo -e ""
  echo -e "Please check ${RED}$COIN_NAME${NC} is running with the following command: ${RED}systemctl status $COIN_NAME.service${NC}"
  echo -e "Use ${RED}$COIN_CLI getinfo${NC} to check your syncing blocks."
  echo -e "Use ${RED}$COIN_CLI mnsync status${NC} to check Sync Completed TRUE."
  echo -e "Use ${RED}$COIN_CLI masternode status${NC} to check your MN."
+ echo -e ""
+ echo -e "Thank you for your donation"
+ echo -e "DOGE: "
+ echo -e "XLRC: SWCEnjGZmsxVkD5TiiVTCKRyLRebYdLPD8"
  echo -e "${BLUE}============================================================================================================================${NC}"
  }
 
