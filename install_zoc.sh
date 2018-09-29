@@ -48,15 +48,15 @@ function download_node() {
   #cd $TMP_FOLDER >/dev/null 2>&1
   #rm $COIN_ZIP >/dev/null 2>&1
   cd /root/ >/dev/null 2>&1
-  wget https://github.com/cryptosam212/masternode/raw/master/linux_zoc.zip
+  wget https://github.com/zocteam/zeroonecoin/releases/download/v0.12.3.2/zeroonecore-0.12.3-x86_64-linux-gnu.tar.gz
   compile_error
-  unzip linux_zoc.zip >/dev/null 2>&1
-  cd linux_zoc
+  tar xvzf zeroonecore-0.12.3-x86_64-linux-gnu.tar.gz >/dev/null 2>&1
+  cd zeroonecore-0.12.3/bin
   chmod +x $COIN_DAEMON && chmod +x $COIN_CLI
   compile_error
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd - >/dev/null 2>&1
-  rm -R linux_telos* >/dev/null 2>&1
+  rm -R zeroonecore-0.12.3/bin* >/dev/null 2>&1
   clear
 }
 
@@ -114,7 +114,7 @@ rpcallowip=127.0.0.1
 listen=1
 server=1
 daemon=1
-
+staking=0
 port=$COIN_PORT
 EOF
 }
@@ -151,15 +151,6 @@ externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 
 #ADDNODES
-addnode=212.237.6.187:10000
-addnode=45.77.115.11:10000
-addnode=136.243.185.18:10000
-addnode=144.202.60.20:10000
-addnode=45.33.22.9:10000
-addnode=153.126.201.69:10000
-addnode=80.211.44.163:10000
-addnode=185.15.244.11:10000
-addnode=212.237.0.210:10000
 EOF
 }
 
