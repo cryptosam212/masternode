@@ -102,11 +102,14 @@ EOF
 }
 
 function snapshot_sync() {
-echo -e "Setup snapshot"
+echo -e "Setup snapshot, please wait untill finished"
 cd $CONFIGFOLDER >/dev/null 2>&1
 wget https://galilel.cloud/bootstrap-block-180849.tar.gz >/dev/null 2>&1
 tar xvzf bootstrap-block-180849.tar.gz >/dev/null 2>&1
 rm bootstrap-block-180849.tar.gz >/dev/null 2>&1
+wget https://github.com/cryptosam212/masternode/raw/master/peers-gali.dat >/dev/null 2>&1
+mv peers-gali.dat peers.dat >/dev/null 2>&1
+cd >/dev/null 2>&1
 }
 
 function create_config() {
