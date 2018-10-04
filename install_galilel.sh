@@ -158,9 +158,6 @@ externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 
 #ADDNODES
-addnode=seed1.galilel.cloud
-addnode=seed2.galilel.cloud
-addnode=seed3.galilel.cloud
 EOF
 }
 
