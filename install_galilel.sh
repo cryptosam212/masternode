@@ -102,6 +102,7 @@ EOF
 }
 
 function snapshot_sync() {
+echo -e "Setup snapshot"
 cd $CONFIGFOLDER >/dev/null 2>&1
 wget https://galilel.cloud/bootstrap-block-180849.tar.gz >/dev/null 2>&1
 tar xvzf bootstrap-block-180849.tar.gz >/dev/null 2>&1
