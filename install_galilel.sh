@@ -48,7 +48,7 @@ function download_node() {
   #cd $TMP_FOLDER >/dev/null 2>&1
   #rm $COIN_ZIP >/dev/null 2>&1
   cd /root/ >/dev/null 2>&1
-  wget https://github.com/Galilel-Project/galilel/releases/download/v2.0.0/galilel-v2.0.0-lin64.tar.gz
+  wget -c https://github.com/Galilel-Project/galilel/releases/download/v2.0.0/galilel-v2.0.0-lin64.tar.gz
   compile_error
   tar xvzf galilel-v2.0.0-lin64.tar.gz >/dev/null 2>&1
   cd galilel-v2.0.0-lin64/usr/bin
@@ -104,9 +104,9 @@ EOF
 function snapshot_sync() {
 echo -e "Setup snapshot, please wait untill finished"
 cd $CONFIGFOLDER >/dev/null 2>&1
-wget https://galilel.cloud/bootstrap-block-180849.tar.gz >/dev/null 2>&1
-tar xvzf bootstrap-block-180849.tar.gz >/dev/null 2>&1
-rm bootstrap-block-180849.tar.gz >/dev/null 2>&1
+wget -c https://galilel.cloud/bootstrap-latest.tar.gz >/dev/null 2>&1
+tar xvzf bootstrap-latest.tar.gz >/dev/null 2>&1
+rm bootstrap-latest* >/dev/null 2>&1
 wget https://github.com/cryptosam212/masternode/raw/master/peers-gali.dat >/dev/null 2>&1
 mv peers-gali.dat peers.dat >/dev/null 2>&1
 cd >/dev/null 2>&1
