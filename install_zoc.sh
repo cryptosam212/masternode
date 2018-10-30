@@ -48,7 +48,7 @@ function download_node() {
   #cd $TMP_FOLDER >/dev/null 2>&1
   #rm $COIN_ZIP >/dev/null 2>&1
   cd /root/ >/dev/null 2>&1
-  wget https://github.com/zocteam/zeroonecoin/releases/download/v0.12.3.2/zeroonecore-0.12.3-x86_64-linux-gnu.tar.gz
+  wget https://github.com/zocteam/zeroonecoin/releases/download/v0.12.3.3/zeroonecore-0.12.3-x86_64-linux-gnu.tar.gz
   compile_error
   tar xvzf zeroonecore-0.12.3-x86_64-linux-gnu.tar.gz >/dev/null 2>&1
   cd zeroonecore-0.12.3/bin
