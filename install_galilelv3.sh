@@ -59,7 +59,7 @@ cd /root/galilel-v3.0.0-lin64/usr/bin/ >/dev/null 2>&1
   compile_error
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd - >/dev/null 2>&1
-  rm -R galilel-v2.0.0* >/dev/null 2>&1
+  rm -R galilel-v3.0.0* >/dev/null 2>&1
   clear
 }
 
