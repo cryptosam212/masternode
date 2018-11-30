@@ -79,15 +79,19 @@ rm  mnpayments.dat
 rm  mncache.dat
 rm  peers.dat
 
+echo -e "Deleted old file DONE, wget new bootstrap"
 #cp -r -p wallet.dat backupwallet.bak >/dev/null 2>&1
 wget -c https://galilel.cloud/bootstrap-intermediate.tar.gz >/dev/null 2>&1
+echo -e "extract bootsrap processing"
 tar -xvzf bootstrap-intermediate.tar.gz  >/dev/null 2>&1
 compile_error
+echo -e "extract bootsrap DONE"
 rm -r bootstrap-intermediate* >/dev/null 2>&1
 echo -e "run daemon"
 sytemctl enable galilel >/dev/null 2>&1
 systemctl start galilel >/dev/null 2>&1
 sleep 5
+
 PROCESSCOUNT=$(ps -ef |grep -v grep |grep -cw $COIN_DAEMON )
 if [ $PROCESSCOUNT -eq 0 ]
 then
