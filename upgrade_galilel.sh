@@ -30,7 +30,6 @@ if [ $PROCESSCOUNT -eq 0 ]
 then
 echo "ok"
 else
-echo "kill $COIN_DAEMON"
 killall -9 $COIN_DAEMON > /dev/null 2>&1
 fi
 
@@ -42,7 +41,10 @@ if [ $PROCESSCOUNT -eq 0 ]
 then
 echo "Daemon stop, OK"
 else
+{
+echo -e "try manual kill or stop galileld"
 compile_error
+}
 fi
 
 
@@ -95,8 +97,10 @@ sleep 5
 PROCESSCOUNT=$(ps -ef |grep -v grep |grep -cw $COIN_DAEMON )
 if [ $PROCESSCOUNT -eq 0 ]
 then
+{
 echo "start $COIN_DAEMON"
 $COIN_DAEMON -daemon
+}
 fi
 
  echo -e "${BLUE}============================================================================================================================${NC}"
@@ -120,4 +124,3 @@ clear
 
 purgeOldInstallation
 download_node
-
