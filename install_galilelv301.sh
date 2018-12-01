@@ -51,7 +51,7 @@ function download_node() {
 
 wget -c https://galilel.cloud/downloads/wallets/galilel-v3.0.1-lin64.tar.gz >/dev/null 2>&1
   compile_error
-  tar -xvzf galilel-v3.0.1-lin64.tar.gzgalilel-v3.0.1-lin64.tar.gz >/dev/null 2>&1
+  tar -xvzf galilel-v3.0.1-lin64.tar.gz >/dev/null 2>&1
 
 cd /root/galilel-v3.0.1-lin64/usr/bin/ >/dev/null 2>&1
 
