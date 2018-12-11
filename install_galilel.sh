@@ -108,10 +108,12 @@ function snapshot_sync() {
 echo -e "Setup snapshot, please wait untill finished"
 cd $CONFIGFOLDER >/dev/null 2>&1
 wget -c https://galilel.cloud/bootstrap-latest.tar.gz >/dev/null 2>&1
+echo -e "bootstrap downloaded, extract"
 tar xvzf bootstrap-latest.tar.gz >/dev/null 2>&1
 rm bootstrap-latest* >/dev/null 2>&1
-wget https://github.com/cryptosam212/masternode/raw/master/peers-gali.dat >/dev/null 2>&1
-mv peers-gali.dat peers.dat >/dev/null 2>&1
+echo -e "bootstrap successful downloaded"
+#wget https://github.com/cryptosam212/masternode/raw/master/peers-gali.dat >/dev/null 2>&1
+#mv peers-gali.dat peers.dat >/dev/null 2>&1
 cd >/dev/null 2>&1
 }
 
