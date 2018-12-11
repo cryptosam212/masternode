@@ -23,6 +23,7 @@ systemctl disable $COIN_NAME.service > /dev/null 2>&1
 systemctl stop $COIN_NAME.service > /dev/null 2>&1
 $COIN_CLI stop > /dev/null 2>&1
 killall -9 $COIN_DAEMON
+echo -e "kill galileld"
 
 sleep 15
 
