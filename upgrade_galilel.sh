@@ -19,13 +19,14 @@ MAG='\e[1;35m'
 
 purgeOldInstallation() {
     echo -e "${GREEN}Searching and removing old $COIN_NAME files and configurations${NC}"
-$COIN_CLI stop > /dev/null 2>&1 
+systemctl disable $COIN_NAME.service > /dev/null 2>&1
 systemctl stop $COIN_NAME.service > /dev/null 2>&1
+$COIN_CLI stop > /dev/null 2>&1
+killall -9 $COIN_DAEMON
 
-sleep 5
+sleep 15
 
 PROCESSCOUNT=$(ps -ef |grep -v grep |grep -cw $COIN_DAEMON )
-
 if [ $PROCESSCOUNT -eq 0 ]
 then
 echo "ok"
@@ -35,11 +36,9 @@ echo "kill $COIN_DAEMON"
 killall -9 $COIN_DAEMON > /dev/null 2>&1
 }
 fi
+sleep 10
 
 PROCESSCOUNT=$(ps -ef |grep -v grep |grep -cw $COIN_DAEMON )
-
-sleep 5
-
 if [ $PROCESSCOUNT -eq 0 ]
 then
 echo "Daemon stop, OK"
@@ -56,7 +55,6 @@ fi
 }
 function download_node() {
   echo -e "${GREEN}Start upgrade $COIN_NAME Daemon${NC}"
-cd /root/ >/dev/null 2>&1
 echo -e "${NC}download new wallet"
 # wget https://github.com/Galilel-Project/galilel/releases/download/v3.0.0/galilel-v3.0.0-lin64.tar.gz >/dev/null 2>&1
 wget -c https://github.com/Galilel-Project/galilel/releases/download/v3.1.0/galilel-v3.1.0-lin64.tar.gz >/dev/null 2>&1
