@@ -288,7 +288,13 @@ function setup_node() {
   create_key
   update_config
   enable_firewall
-  configure_systemd
+  #configure_systemd
+PROCESSCOUNT=$(ps -ef |grep -v grep |grep -cw $COIN_DAEMON )
+if [ $PROCESSCOUNT -eq 0 ]
+then
+echo "start $COIN_DAEMON"
+$COIN_DAEMON -daemon
+fi  
   important_information
 }
 
