@@ -301,5 +301,5 @@ read INSTALL
 if [[ $INSTALL =~ "Y"|"y" ]] ; then
 prepare_system
 fi
-#download_node
+download_node
 setup_node
