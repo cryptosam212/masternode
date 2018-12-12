@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CONFIGFOLDER='/root/.galilel'
+CONFIG_FILE='galilel.conf'
 COIN_DAEMON='galileld'
 COIN_CLI='galilel-cli'
 COIN_PATH='/usr/local/bin/'
@@ -23,7 +24,7 @@ systemctl disable $COIN_NAME.service > /dev/null 2>&1
 systemctl stop $COIN_NAME.service > /dev/null 2>&1
 $COIN_CLI stop > /dev/null 2>&1
 killall -9 $COIN_DAEMON
-echo -e "kill galileld"
+echo -e "stop daemon $COIN_DAEMON"
 
 sleep 15
 
@@ -56,10 +57,10 @@ fi
 }
 function download_node() {
   echo -e "${GREEN}Start upgrade $COIN_NAME Daemon${NC}"
-echo -e "${NC}download new wallet"
-# wget https://github.com/Galilel-Project/galilel/releases/download/v3.0.0/galilel-v3.0.0-lin64.tar.gz >/dev/null 2>&1
+echo -e "download new wallet"
 wget -c https://github.com/Galilel-Project/galilel/releases/download/v3.1.0/galilel-v3.1.0-lin64.tar.gz >/dev/null 2>&1
   compile_error
+echo -e "extract new wallet"  
   tar -xvzf galilel-v3.1.0-lin64.tar.gz >/dev/null 2>&1
 
 cd /root/galilel-v3.1.0-lin64/usr/bin/ >/dev/null 2>&1
@@ -86,15 +87,34 @@ rm  peers.dat
 rm db.log
 rm debug.log
 
-#cp -r -p wallet.dat backupwallet.bak >/dev/null 2>&1
-#wget -c https://galilel.cloud/bootstrap-latest.tar.gz >/dev/null 2>&1
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1A57xlrRk56vvdsFpN4qRiZNgYTPCe9mP' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1A57xlrRk56vvdsFpN4qRiZNgYTPCe9mP" -O galilel-286199.zip && rm -rf /tmp/cookies.txt >/dev/null 2>&1
-unzip galilel-286199.zip >/dev/null 2>&1
-compile_error
-rm -r galilel-286199.zip >/dev/null 2>&1
+echo -e "Setup snapshot, please wait untill finished"
+cd $CONFIGFOLDER >/dev/null 2>&1
+wget -c https://galilel.cloud/bootstrap-latest.tar.gz >/dev/null 2>&1
+echo -e "bootstrap downloaded, extract"
+tar xvzf bootstrap-latest.tar.gz >/dev/null 2>&1
+rm bootstrap-latest* >/dev/null 2>&1
+echo -e "bootstrap successful downloaded"
+cd >/dev/null 2>&1
+
+cd $CONFIGFOLDER
+echo "Replace addnode to $COIN_NAME official addnode to $CONFIG_FILE"
+sed -i "/\b\(addnode\)\b/d" $CONFIG_FILE
+
+cat << EOF >> $CONFIG_FILE
+addnode=seed1.galilel.cloud
+addnode=seed2.galilel.cloud
+addnode=seed3.galilel.cloud
+addnode=seed4.galilel.cloud
+addnode=seed5.galilel.cloud
+addnode=seed6.galilel.cloud
+addnode=seed7.galilel.cloud
+addnode=seed8.galilel.cloud
+
+EOF
+
 echo -e "run daemon"
-sytemctl enable galilel >/dev/null 2>&1
-systemctl start galilel >/dev/null 2>&1
+sytemctl enable $COIN_NAME >/dev/null 2>&1
+systemctl start $COIN_NAME >/dev/null 2>&1
 sleep 5
 PROCESSCOUNT=$(ps -ef |grep -v grep |grep -cw $COIN_DAEMON )
 if [ $PROCESSCOUNT -eq 0 ]
