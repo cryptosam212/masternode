@@ -873,6 +873,14 @@ IPCEK1A+=($IPCEK1)
 echo -e " ${CYAN} $i${NC}	$IPCEK1" ;
 COUNTA=$((COUNTA+1))
 done
+if [ $COUNTA -gt 0 ]
+then
+if [ ! -f '/root/bin/galilel_installed' ]
+then
+echo "$COUNTA" >> /root/bin/galilel_installed
+fi
+fi
+
 echo ""
 echo -e "${RED}$COUNTA installed masternode${NC}"
 echo ""
