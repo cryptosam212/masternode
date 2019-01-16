@@ -354,12 +354,16 @@ if [[ $gateway3 = *"64"* ]]; then
 fi
 MASK="/64"
 
+if grep -q "add ${gateway}$INSTALOK$MASK dev $face" /etc/network/interfaces ; then
+    echo "ipv6 ${gateway}$INSTALOK$MASK already inside"
+else
 echo "up /sbin/ip -6 addr add ${gateway}$INSTALOK$MASK dev $face # $COIN_NAME" >> /etc/network/interfaces
-NODEIP="[${gateway}$INSTALOK]"
 cd >/dev/null 2>&1
 /sbin/ip -6 addr add ${gateway}$INSTALOK$MASK dev $face >/dev/null 2>&1
 systemctl restart networking >/dev/null 2>&1
-#exit 1
+fi
+
+NODEIP="[${gateway}$INSTALOK]"
 IPA+=($NODEIP)
 }
 
@@ -947,13 +951,34 @@ let COUNTER=0
 while [ $COUNTER -lt $MNTOTAL ]; do
 
 let COUNTA=0
+RPCPORTCEK1=0
+PORTCEK1=0
 CONFIGFOLDER="/root/.galilel"
 echo -e "${YELLOW}List of installed $COIN_NAME1 Masternode${NC}"
 for i in $(find ${CONFIGFOLDER}* -maxdepth 0 -type d | cut -c8-) ; do
 IPCEK=$(grep  "externalip" /root/.$i/galilel.conf | cut -c12-  2> /dev/null)
 IPCEK1=$(echo "$IPCEK" | rev | cut -c 7- | rev)
 IPCEK1A+=($IPCEK1)
+RPCPORTCEK=$(grep  "rpcport" /root/.$i/dextro.conf | cut -c9-  2> /dev/null)
+PORTCEK=$(grep  "port" /root/.$i/dextro.conf | head -n 2 | tail -n 1 )
+PORTCEK=$(echo "$PORTCEK" | cut -c 6-)
 echo -e " ${CYAN} $i${NC}	$IPCEK1" ;
+
+if [ "$RPCPORTCEK" -gt "$RPCPORTCEK1" ]
+then
+RPCPORTCEK1="$RPCPORTCEK"
+#echo "RPCPORT = $RPCPORTCEK1"
+else
+RPCPORTCEK1="$RPCPORTCEK1"
+fi
+if [ "$PORTCEK" -gt "$PORTCEK1" ]
+then
+PORTCEK1="$PORTCEK"
+#echo "PORT = $PORTCEK1"
+else
+PORTCEK1="$PORTCEK1"
+fi
+
 COUNTA=$((COUNTA+1))
 done
 echo ""
@@ -971,7 +996,7 @@ CONFIG_FILE='galilel.conf'
 CONFIGFOLDER="/root/.galilel_$ALIAS"
 COIN_PORT=36001
 #COIN_PORT=$((36001+$COUNTA))
-RPC_PORT=$((360010+$COUNTA))
+RPC_PORT=$((1+$RPCPORTCEK1))
 
 ALIASCEK=$(find ${CONFIGFOLDER} -maxdepth 0 -type d  2> /dev/null)
 if [ ! $ALIASCEK = '' ]
