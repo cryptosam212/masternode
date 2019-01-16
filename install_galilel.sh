@@ -100,6 +100,34 @@ EOF
   fi
 }
 
+function configure_systemdmenu()
+{
+cat << EOF > /etc/systemd/system/$COIN_NAME.service
+[Unit]
+Description=$COIN_NAME service
+After=network.target
+[Service]
+User=root
+Group=root
+Type=forking
+#PIDFile=$CONFIGFOLDER/$COIN_NAME.pid
+ExecStart=$COIN_PATH$COIN_DAEMON -daemon -conf=$CONFIGFOLDER/$CONFIG_FILE -datadir=$CONFIGFOLDER
+ExecStop=-$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER/$CONFIG_FILE -datadir=$CONFIGFOLDER stop
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=10s
+StartLimitInterval=120s
+StartLimitBurst=5
+[Install]
+WantedBy=multi-user.target
+EOF
+
+  systemctl daemon-reload
+  sleep 3
+  systemctl enable $COIN_NAME.service >/dev/null 2>&1
+}
+
 function snapshot_sync() 
 {
 if [ ! -f bootstrap-latest.tar.gz ]
@@ -582,6 +610,14 @@ COIN_NAME="$MENU1"
 COIN_TICKER="$MENU1"
 MENUNYA="$MENU1.sh"
 MENU_NAME="$MENU1"
+CONFIG_FILE='galilel.conf'
+CONFIGFOLDER="/root/.$MENU1"
+COIN_SERVICE="$MENU1.service"
+cd /etc/systemd/system/ >/dev/null 2>&1
+if [ ! -f $COIN_SERVICE ]
+then
+configure_systemdmenu
+fi
 create_menu
 echo ""
 fi
