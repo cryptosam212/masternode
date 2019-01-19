@@ -9,7 +9,7 @@ COIN_PATH='/usr/local/bin/'
 COIN_NAME='galilel'
 COIN_NAMECEK='galilel'
 COIN_PORT=36001
-WALLET_VER='301010'
+WALLET_VER='301020'
 #RPC_PORT=36002
 COIN_NAME1='GALILEL'
 MNCOUNT=0
@@ -44,16 +44,16 @@ cd $COIN_PATH >/dev/null 2>&1
  
  cd /root/ >/dev/null 2>&1
 
-wget -c https://github.com/Galilel-Project/galilel/releases/download/v3.1.1/galilel-v3.1.1-lin64.tar.gz  >/dev/null 2>&1
+wget -c https://github.com/Galilel-Project/galilel/releases/download/v3.1.2/galilel-v3.1.2-lin64.tar.gz  >/dev/null 2>&1
   compile_error
-  tar -xvzf galilel-v3.1.1-lin64.tar.gz >/dev/null 2>&1
+  tar -xvzf galilel-v3.1.2-lin64.tar.gz >/dev/null 2>&1
 
-cd /root/galilel-v3.1.1-lin64/usr/bin/ >/dev/null 2>&1
+cd /root/galilel-v3.1.2-lin64/usr/bin/ >/dev/null 2>&1
 chmod +x $COIN_DAEMON $COIN_CLI >/dev/null 2>&1
 
   cp -r -p $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd  >/dev/null 2>&1
-  rm -R galilel-v3.1.1-lin64* >/dev/null 2>&1
+  rm -R galilel-v3.1.2-lin64* >/dev/null 2>&1
   echo -e "$COIN_NAME Wallet $WALLET_VER installed"
 #fi
 }
