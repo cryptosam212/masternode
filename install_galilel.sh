@@ -720,7 +720,7 @@ read WALLETNYA
 if [[ $WALLETNYA =~ "Y"|"y" ]] ;
 then
 cd >/dev/null 2>&1
-rm galilel-v3.1.0-lin64.tar.gz >/dev/null 2>&1
+rm galilel-v3.2.0-lin64* >/dev/null 2>&1
 download_node
 fi
 echo -e "${YELLOW}Do you already have latest bootstrap files? [y/n] Type n if not sure ${NC}"
