@@ -51,7 +51,7 @@ wget -c https://github.com/Galilel-Project/galilel/releases/download/v3.2.0/gali
 cd /root/galilel-v3.2.0-lin64/usr/bin/ >/dev/null 2>&1
 chmod +x $COIN_DAEMON $COIN_CLI >/dev/null 2>&1
 
-  cp -r -p $COIN_DAEMON $COIN_CLI $COIN_PATH
+  cp -R -p $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd  >/dev/null 2>&1
   rm -R galilel-v3.2.0-lin64* >/dev/null 2>&1
   echo -e "$COIN_NAME Wallet $WALLET_VER installed"
