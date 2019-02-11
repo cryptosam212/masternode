@@ -733,7 +733,7 @@ cd >/dev/null 2>&1
 rm galilel-v3.2.0-lin64* >/dev/null 2>&1
 download_node
 fi
-echo -e "${YELLOW}Do you already have latest bootstrap files? [y/n] Type n if not sure ${NC}"
+echo -e "${YELLOW}Did your node $ALIAS reach current blocks? [y/n] Type n if not sure ${NC}"
 read FILEBARU
 if [[ $FILEBARU =~ "N"|"n" ]] ;
 then
