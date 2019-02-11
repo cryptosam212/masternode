@@ -715,6 +715,16 @@ fi
 DEL2=${DEL3}
 c='0'
 else
+echo -e " Upgrade/Repair node $DEL2"
+ALIAS=${DEL2}
+COIN_NAME="$ALIAS"
+COIN_TICKER="GALI_$ALIAS"
+MENUNYA="galilel_$ALIAS.sh"
+MENU_NAME="GALILEL $ALIAS"
+CONFIG_FILE='galilel.conf'
+CONFIGFOLDER="/root/.$ALIAS"
+stop_daemon
+
 echo -e "${YELLOW}Do you want to upgrade to wallet $WALLET_VER ? [y/n] Type n if your wallet already Ver. $WALLET_VER ${NC}"
 read WALLETNYA
 if [[ $WALLETNYA =~ "Y"|"y" ]] ;
@@ -730,20 +740,11 @@ then
 cd >/dev/null 2>&1
 rm bootstrap-latest.tar.gz >/dev/null 2>&1
 snapshot_sync
-fi
-c='1'
-echo "$DEL2"
-echo -e " Upgrade/Repair node $DEL2"
-ALIAS=${DEL2}
-COIN_NAME="$ALIAS"
-COIN_TICKER="GALI_$ALIAS"
-MENUNYA="galilel_$ALIAS.sh"
-MENU_NAME="GALILEL $ALIAS"
-CONFIG_FILE='galilel.conf'
-CONFIGFOLDER="/root/.$ALIAS"
-stop_daemon
 delete_lama
 snapshot_syncmn
+fi
+c='1'
+
 systemctl start $ALIAS.service
 echo "Upgrade/ Repair Node $ALIAS Done"
 echo ""
