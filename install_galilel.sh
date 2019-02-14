@@ -665,6 +665,8 @@ for i in $(find ${CONFIGFOLDER}* -maxdepth 0 -type d | cut -c8-) ; do
 VERSINYA="$(${COIN_CLI} -datadir=/root/.${i} getinfo | grep "version"|head -1)"
 echo -e " ${CYAN} $i${NC}   ${VERSINYA}" ;
 done
+echo ""
+echo ""
 
 echo -e "${YELLOW}Do you want to upgrade Wallet to version $WALLET_VER for your all nodes? [y/n] ${NC}"
 read UPGRADE1
