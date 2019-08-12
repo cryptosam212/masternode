@@ -6,6 +6,7 @@ COIN_DAEMON='galileld'
 COIN_CLI='galilel-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_NAME='galilel'
+COIN_VERSION='3040000'
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -57,7 +58,7 @@ fi
 }
 function download_node() {
   echo -e "${GREEN}Start upgrade $COIN_NAME Daemon${NC}"
-echo -e "download new wallet"
+echo -e "download new wallet Galilel ver $COIN_VERSION"
 wget -c https://github.com/Galilel-Project/galilel/releases/download/v3.4.0/galilel-v3.4.0-lin64.tar.gz >/dev/null 2>&1
   compile_error
 echo -e "extract new wallet"  
