@@ -58,57 +58,43 @@ fi
 function download_node() {
   echo -e "${GREEN}Start upgrade $COIN_NAME Daemon${NC}"
 echo -e "download new wallet"
-wget -c https://github.com/Galilel-Project/galilel/releases/download/v3.3.0/galilel-v3.3.0-lin64.tar.gz >/dev/null 2>&1
+wget -c https://github.com/Galilel-Project/galilel/releases/download/v3.4.0/galilel-v3.4.0-lin64.tar.gz >/dev/null 2>&1
   compile_error
 echo -e "extract new wallet"  
-  tar -xvzf galilel-v3.3.0-lin64.tar.gz >/dev/null 2>&1
+  tar -xvzf galilel-v3.4.0-lin64.tar.gz >/dev/null 2>&1
 
-cd /root/galilel-v3.3.0-lin64/usr/bin/ >/dev/null 2>&1
+cd /root/galilel-v3.4.0-lin64/usr/bin/ >/dev/null 2>&1
 chmod +x $COIN_DAEMON $COIN_CLI >/dev/null 2>&1
 
 echo -e "copy new wallet to usr/local/bin"
   cp -r -p $COIN_DAEMON $COIN_CLI $COIN_PATH >/dev/null 2>&1
   cd  >/dev/null 2>&1
- rm -r galilel-v3.3.0-lin64* >/dev/null 2>&1
+ rm -r galilel-v3.4.0-lin64* >/dev/null 2>&1
 
-echo -e "Delete unused file and replace with new file"
-cd $CONFIGFOLDER >/dev/null 2>&1
-rm -r blocks
-rm -r chainstate
-rm -r sporks
-rm -r zerocoin
-rm -r .lock
-rm  budget.dat
-rm  fee_estimates.dat
-rm  mnpayments.dat
-rm  mncache.dat
-rm db.log
-rm debug.log
+#echo -e "Delete unused file and replace with new file"
+#cd $CONFIGFOLDER >/dev/null 2>&1
+#rm -r blocks
+#rm -r chainstate
+#rm -r sporks
+#rm -r zerocoin
+#rm -r .lock
+#rm  budget.dat
+#rm  fee_estimates.dat
+#rm  mnpayments.dat
+#rm  mncache.dat
+#rm db.log
+#rm debug.log
 
-echo -e "Setup snapshot, please wait untill finished"
-cd $CONFIGFOLDER >/dev/null 2>&1
-wget -c https://galilel.cloud/bootstrap-latest.tar.gz >/dev/null 2>&1
-echo -e "bootstrap downloaded, extract"
-tar xvzf bootstrap-latest.tar.gz >/dev/null 2>&1
-rm bootstrap-latest* >/dev/null 2>&1
-echo -e "bootstrap successful downloaded"
+#echo -e "Setup snapshot, please wait untill finished"
+#cd $CONFIGFOLDER >/dev/null 2>&1
+#wget -c https://galilel.cloud/bootstrap-latest.tar.gz >/dev/null 2>&1
+#echo -e "bootstrap downloaded, extract"
+#tar xvzf bootstrap-latest.tar.gz >/dev/null 2>&1
+#rm bootstrap-latest* >/dev/null 2>&1
+#echo -e "bootstrap successful downloaded"
 cd >/dev/null 2>&1
 
-cd $CONFIGFOLDER
-echo "Replace addnode to $COIN_NAME official addnode to $CONFIG_FILE"
-sed -i "/\b\(addnode\)\b/d" $CONFIG_FILE
-
-cat << EOF >> $CONFIG_FILE
-addnode=seed1.galilel.cloud
-addnode=seed2.galilel.cloud
-addnode=seed3.galilel.cloud
-addnode=seed4.galilel.cloud
-addnode=seed5.galilel.cloud
-addnode=seed6.galilel.cloud
-addnode=seed7.galilel.cloud
-addnode=seed8.galilel.cloud
-
-EOF
+#cd $CONFIGFOLDER
 
 echo -e "run daemon"
 sytemctl enable $COIN_NAME >/dev/null 2>&1
