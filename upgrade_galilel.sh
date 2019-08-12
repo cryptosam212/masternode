@@ -77,13 +77,11 @@ rm -r blocks
 rm -r chainstate
 rm -r sporks
 rm -r zerocoin
-rm -r backups
 rm -r .lock
 rm  budget.dat
 rm  fee_estimates.dat
 rm  mnpayments.dat
 rm  mncache.dat
-rm  peers.dat
 rm db.log
 rm debug.log
 
